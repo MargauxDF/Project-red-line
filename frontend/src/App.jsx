@@ -1,12 +1,11 @@
-import Home from "./pages/Home";
-
+import WilderList from "./pages/WilderList";
 import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <Home />
-      <p>coucou</p>
+      {/* <Home /> */}
+      <WilderList />
     </div>
   );
 }
