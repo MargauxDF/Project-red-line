@@ -1,36 +1,39 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./CardWilder.css";
+import styles from "./CardWilder.module.css";
 
 function CardWilder({
-  // eslint-disable-next-line react/prop-types
   wilder: { profilPicture, firstname, lastname, campus },
 }) {
   return (
-    <div className="wilder-card">
-      <div className="wilder-card-header">
-        <img src={profilPicture} alt={firstname} />
+    <div className={styles.card}>
+      <div>
+        <img
+          src={profilPicture}
+          alt={firstname}
+          className={styles.profilPicture}
+        />
       </div>
-      <div className="wilder-card-body">
-        <div className="wilder-card-body-title">
+      <div className={styles.body}>
+        <div>
           {" "}
           <h2>
             {firstname} {lastname}
           </h2>{" "}
+          <h3>{campus}</h3>
         </div>
-      </div>
-      <div className="wilder-card-body-text">
-        <h3>{campus}</h3>
       </div>
     </div>
   );
 }
 
 CardWilder.propTypes = {
-  profilPicture: PropTypes.string.isRequired,
-  firstname: PropTypes.string.isRequired,
-  lastname: PropTypes.string.isRequired,
-  campus: PropTypes.string.isRequired,
+  wilder: PropTypes.shape({
+    profilPicture: PropTypes.string.isRequired,
+    firstname: PropTypes.string.isRequired,
+    lastname: PropTypes.string.isRequired,
+    campus: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default CardWilder;
