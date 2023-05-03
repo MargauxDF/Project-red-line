@@ -5,8 +5,7 @@ import styles from "./Navbar.module.css";
 function Navbar() {
   // apply different styles on link if active or not
   const getActiveLinkClassName = ({ isActive }) => {
-    if (isActive) return styles.active;
-    return styles.notActive;
+    return isActive ? styles.active : styles.notActive;
   };
 
   return (
