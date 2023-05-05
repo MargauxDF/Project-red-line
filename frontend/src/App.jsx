@@ -4,19 +4,24 @@ import "./App.css";
 import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
 import Wilder from "./pages/Wilder";
+import MyProfile from "./pages/MyProfile";
+import Login from "./pages/Login";
+import UserProvider from "./contexts/UserContext";
 
 function App() {
   return (
-    <div className="App">
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/wilders" element={<WilderList />} />
-        <Route path="/wilders/:id" element={<Wilder />} />
-        <Route path="/my-profile" element="Mon profil" />
-        <Route path="/login" element="login" />
-      </Routes>
-    </div>
+    <UserProvider>
+      <div className="App">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/wilders" element={<WilderList />} />
+          <Route path="/wilders/:id" element={<Wilder />} />
+          <Route path="/my-profile" element={<MyProfile />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </div>
+    </UserProvider>
   );
 }
 
