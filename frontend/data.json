@@ -6,7 +6,7 @@
       "lastname": "Paillard",
       "age": 35,
       "campus": "Lyon",
-      "profilPicture": "../src/assets/default-profile-picture.jpeg"
+      "profilPicture": "./src/assets/default-profile-picture.jpeg"
     },
     {
       "id": 1,
@@ -14,7 +14,7 @@
       "lastname": "Java",
       "age": 59,
       "campus": "Paris",
-      "profilPicture": "../src/assets/default-profile-picture.jpeg"
+      "profilPicture": "./src/assets/default-profile-picture.jpeg"
     },
     {
       "id": 2,
@@ -22,7 +22,7 @@
       "lastname": "Mathilde",
       "age": 25,
       "campus": "Biarritz",
-      "profilPicture": "../src/assets/default-profile-picture.jpeg"
+      "profilPicture": "./src/assets/default-profile-picture.jpeg"
     },
     {
       "id": 3,
@@ -30,7 +30,7 @@
       "lastname": "Jacques",
       "age": 32,
       "campus": "Paris",
-      "profilPicture": "../src/assets/default-profile-picture.jpeg"
+      "profilPicture": "./src/assets/default-profile-picture.jpeg"
     },
     {
       "id": 4,
@@ -38,7 +38,7 @@
       "lastname": "De Filippis",
       "age": 30,
       "campus": "Lyon",
-      "profilPicture": "../src/assets/default-profile-picture.jpeg"
+      "profilPicture": "./src/assets/default-profile-picture.jpeg",
     }
   ]
 }
