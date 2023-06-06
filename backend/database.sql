@@ -17,5 +17,4 @@ CREATE TABLE project (
   FOREIGN KEY (user_id) REFERENCES user(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO user (`firstname`, `lastname`, `age`, `campus`, `email`) VALUES ('toto', 'toto', '4', 'Lyon', 'toto@mail.com');
 

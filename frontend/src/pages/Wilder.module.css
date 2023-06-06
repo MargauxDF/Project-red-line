@@ -47,3 +47,11 @@
   text-decoration: none;
   color: black;
 }
+
+.buttonContainer {
+  text-align: center;
+}
+
+.button {
+  display: inline-block;
+}
