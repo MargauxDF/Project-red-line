@@ -10,6 +10,10 @@ function Wilder() {
 
   const [wilder, setWilder] = useState(null);
 
+  const sendEmail = () => {
+    window.location.href = `mailto:${wilder.email}`;
+  };
+
   useEffect(() => {
     axios
       .get(`${apiBaseUrl}/wilders/${id}`)
@@ -22,13 +26,16 @@ function Wilder() {
     <div className={styles.page}>
       <div className={styles.container}>
         <div className={styles.image}>
-          <img src={wilder.profilPicture} alt={wilder.firstname} />
+          <img src={wilder.profile_picture} alt={wilder.firstname} />
         </div>
         <div className={styles.infos}>
           <p> prénom : {wilder.firstname} </p>
           <p> nom de famille : {wilder.lastname} </p>
           <p> age : {wilder.age} </p>
           <p> campus : {wilder.campus} </p>
+          <button type="button" onClick={sendEmail}>
+            Contactez-moi
+          </button>
         </div>
       </div>
       <div className={styles.buttonContainer}>

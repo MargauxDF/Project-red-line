@@ -3,7 +3,9 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import styles from "./CardWilder.module.css";
 
-function CardWilder({ wilder: { profilPicture, firstname, lastname, id } }) {
+function CardWilder({
+  wilder: { profile_picture: profilPicture, firstname, lastname, id },
+}) {
   return (
     <div className={styles.card}>
       <div>
@@ -25,7 +27,7 @@ function CardWilder({ wilder: { profilPicture, firstname, lastname, id } }) {
 
 CardWilder.propTypes = {
   wilder: PropTypes.shape({
-    profilPicture: PropTypes.string.isRequired,
+    profile_picture: PropTypes.string.isRequired,
     firstname: PropTypes.string.isRequired,
     lastname: PropTypes.string.isRequired,
     campus: PropTypes.string.isRequired,

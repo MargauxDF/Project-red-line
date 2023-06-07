@@ -31,9 +31,9 @@ const migrate = async () => {
       const randomCampus = campus[Math.floor(Math.random() * 6)];
       const firstname = faker.person.firstName();
       const lastname = faker.person.lastName();
-      const age = faker.number.int({ min: 18, max: 70 });
+      const age = faker.number.int({ min: 18, max: 65 });
       const profilePicture =
-        "http://localhost:4000/default-profile-picture.jpeg";
+        "http://localhost:4000/assets/images/default-profile-picture.jpeg";
       const email = faker.internet
         .email({ firstName: firstname, lastName: lastname })
         .toLowerCase();
