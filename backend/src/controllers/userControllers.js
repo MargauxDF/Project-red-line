@@ -65,9 +65,61 @@ const destroy = (req, res) => {
     });
 };
 
+const edit = (req, res) => {
+  const user = req.body;
+
+  user.id = parseInt(req.params.id, 10);
+
+  models.user
+    .update(user)
+    .then(([result]) => {
+      if (result.affectedRows === 0) {
+        res.status(404).send("USer not found");
+      } else {
+        res.sendStatus(204);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Erreur interne");
+    });
+};
+
+const readWithProjects = (req, res) => {
+  const id = parseInt(req.params.id, 10);
+
+  let user = {};
+
+  models.user
+    .find(id)
+    .then(([rows]) => {
+      if (rows[0]) {
+        [user] = rows;
+        models.project
+          .findProjectsWithUserId(user.id)
+          .then(([projectRows]) => {
+            user.projects = projectRows;
+            res.send(user);
+          })
+          .catch((err) => {
+            console.error(err);
+            res.status(500).send("Erreur interne");
+          });
+      } else {
+        res.status(404).send("User not found");
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Erreur interne");
+    });
+};
+
 module.exports = {
   browse,
   read,
   add,
   destroy,
+  edit,
+  readWithProjects,
 };

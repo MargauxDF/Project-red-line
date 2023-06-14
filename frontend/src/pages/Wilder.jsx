@@ -33,7 +33,11 @@ function Wilder() {
           <p> nom de famille : {wilder.lastname} </p>
           <p> age : {wilder.age} </p>
           <p> campus : {wilder.campus} </p>
-          <button type="button" onClick={sendEmail}>
+          <button
+            type="button"
+            onClick={sendEmail}
+            className={styles.contactMeButton}
+          >
             Contactez-moi
           </button>
         </div>

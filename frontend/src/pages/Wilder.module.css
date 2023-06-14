@@ -39,11 +39,9 @@
 }
 
 .page a {
-  background-color: whitesmoke;
   padding: 10px 10px;
   border-radius: 5px;
   cursor: pointer;
-  margin-bottom: 10px;
   text-decoration: none;
   color: black;
 }
@@ -54,4 +52,10 @@
 
 .button {
   display: inline-block;
+  margin: 10px;
+  background-color: whitesmoke;
+}
+
+.contactMeButton {
+  padding: 10px;
 }

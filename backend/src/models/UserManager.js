@@ -18,6 +18,21 @@ class UserManager extends AbstractManager {
       ]
     );
   }
+
+  update(user) {
+    return this.database.query(
+      `UPDATE ${this.table} set firstname = ?, lastname = ?, age = ?, campus = ?, profile_picture = ?, email = ? WHERE id = ?`,
+      [
+        user.firstname,
+        user.lastname,
+        user.age,
+        user.campus,
+        user.profile_picture,
+        user.email,
+        user.id,
+      ]
+    );
+  }
 }
 
 module.exports = UserManager;
