@@ -11,10 +11,11 @@ router.post("/items", itemControllers.add);
 router.delete("/items/:id", itemControllers.destroy);
 
 const userControllers = require("./controllers/userControllers");
+const { validateUser } = require("./services/validators");
 
 router.get("/api/wilders", userControllers.browse);
 router.get("/api/wilders/:id", userControllers.readWithProjects);
-router.post("/api/wilders", userControllers.add);
+router.post("/api/wilders", validateUser, userControllers.add);
 router.delete("/api/wilders/:id", userControllers.destroy);
 router.put("/api/wilders/:id", userControllers.edit);
 

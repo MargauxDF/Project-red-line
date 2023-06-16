@@ -85,34 +85,54 @@ const edit = (req, res) => {
     });
 };
 
-const readWithProjects = (req, res) => {
-  const id = parseInt(req.params.id, 10);
+// const readWithProjects = (req, res) => {
+//   const id = parseInt(req.params.id, 10);
 
-  let user = {};
+//   let user = {};
 
-  models.user
-    .find(id)
-    .then(([rows]) => {
-      if (rows[0]) {
-        [user] = rows;
-        models.project
-          .findProjectsWithUserId(user.id)
-          .then(([projectRows]) => {
-            user.projects = projectRows;
-            res.send(user);
-          })
-          .catch((err) => {
-            console.error(err);
-            res.status(500).send("Erreur interne");
-          });
-      } else {
-        res.status(404).send("User not found");
-      }
-    })
-    .catch((err) => {
-      console.error(err);
-      res.status(500).send("Erreur interne");
-    });
+//   models.user
+//     .find(id)
+//     .then(([rows]) => {
+//       if (rows[0]) {
+//         [user] = rows;
+//         models.project
+//           .findProjectsWithUserId(user.id)
+//           .then(([projectRows]) => {
+//             user.projects = projectRows;
+//             res.send(user);
+//           })
+//           .catch((err) => {
+//             console.error(err);
+//             res.status(500).send("Erreur interne");
+//           });
+//       } else {
+//         res.status(404).send("User not found");
+//       }
+//     })
+//     .catch((err) => {
+//       console.error(err);
+//       res.status(500).send("Erreur interne");
+//     });
+// };
+
+const readWithProjects = async (req, res) => {
+  try {
+    const id = parseInt(req.params.id, 10);
+    const [userRows] = await models.user.find(id);
+    if (!userRows[0]) {
+      return res.status(404).send("User not found");
+    }
+    const [user] = userRows;
+
+    const [projectRows] = await models.project.findProjectsWithUserId(user.id);
+
+    user.projects = projectRows;
+
+    return res.send(user);
+  } catch (err) {
+    console.error(err);
+    return res.status(500).send("Erreur interne");
+  }
 };
 
 module.exports = {
