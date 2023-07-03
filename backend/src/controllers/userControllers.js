@@ -1,15 +1,28 @@
+const { PrismaClient } = require("@prisma/client");
 const models = require("../models");
 
-const browse = (req, res) => {
-  models.user
-    .findAll()
-    .then(([result]) => {
-      res.send(result);
-    })
-    .catch((err) => {
-      console.error(err);
-      res.status(500).send("Erreur interne");
-    });
+// const browse = (req, res) => {
+//   models.user
+//     .findAll()
+//     .then(([result]) => {
+//       res.send(result);
+//     })
+//     .catch((err) => {
+//       console.error(err);
+//       res.status(500).send("Erreur interne");
+//     });
+// };
+
+const prisma = new PrismaClient();
+
+const browse = async (req, res) => {
+  try {
+    const users = await prisma.user.findMany();
+    res.send(users);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Errueur intern");
+  }
 };
 
 const read = (req, res) => {
