@@ -33,6 +33,17 @@ class UserManager extends AbstractManager {
       ]
     );
   }
+
+  countUsers() {
+    return this.database.query(`SELECT COUNT(*) AS total from ${this.table}`);
+  }
+
+  findAll(limit, offset) {
+    return this.database.query(`SELECT * FROM ${this.table} LIMIT ? OFFSET ?`, [
+      limit,
+      offset,
+    ]);
+  }
 }
 
 module.exports = UserManager;

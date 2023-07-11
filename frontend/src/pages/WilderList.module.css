@@ -1,6 +1,18 @@
 .container {
+  display: flex;
+  flex-direction: column;
+}
+
+.card_container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 }
 
+.buttons_container {
+  text-align: center;
+}
 
+.button_container buttn {
+  width: 100px;
+  margin: 40px;
+}

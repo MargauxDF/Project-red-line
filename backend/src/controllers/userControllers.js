@@ -1,15 +1,33 @@
 const models = require("../models");
 
-const browse = (req, res) => {
-  models.user
-    .findAll()
-    .then(([result]) => {
-      res.send(result);
-    })
-    .catch((err) => {
-      console.error(err);
-      res.status(500).send("Erreur interne");
-    });
+// const browse = (req, res) => {
+//   models.user
+//     .findAll()
+//     .then(([result]) => {
+//       res.send(result);
+//     })
+//     .catch((err) => {
+//       console.error(err);
+//       res.status(500).send("Erreur interne");
+//     });
+// };
+
+const browse = async (req, res) => {
+  const { page } = req.query;
+  const limit = 3;
+  const offset = (page - 1) * limit;
+
+  try {
+    const [[{ total }]] = await models.user.countUsers();
+    // const [totalUsers] = await models.user.countUsers();
+    // const {total} = totalUsers[0];
+
+    const [users] = await models.user.findAll(limit, offset);
+    res.send({ total, datas: users });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Erreur interne");
+  }
 };
 
 const read = (req, res) => {
